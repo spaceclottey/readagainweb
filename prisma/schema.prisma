@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Topic {
+  id Int @id @default(autoincrement())
+  user String @default("public")
+  title String @default("No Title Yet")
+  url String
+  notes String @default("")
+  priority Int @default(5)
+  interval Int @default(1)
+  intervalLastUpdated String @default("Never")
+  dismissed Boolean @default(false)
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String
+  isPaying Boolean @default(false)
+}
