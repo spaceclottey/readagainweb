@@ -13,14 +13,12 @@ export default function Add() {
     setButtonPress(false)
     async function fetchThatData(){
       console.log("link inside thingy: ", link)
-      // const hello = await fetch(link)
       const hello = await fetch("/api/fetchText", {
           method: "POST",
-          body: JSON.stringify(link), //JSON.stringify({"link": link}),
+          body: JSON.stringify({"link": link}),
         })
       const text = await hello.text()
       setText(text)
-      console.log("text: ", text)
     }
     fetchThatData()
   }, [buttonPress])
@@ -89,7 +87,7 @@ export default function Add() {
 
 
       <main className={styles.main}>
-        <div dangerouslySetInnerHTML={{ __html: text}}></div>
+        {/* <div dangerouslySetInnerHTML={{ __html: text}}></div> */}
         <div> 
           <input
             type="text"

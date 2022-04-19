@@ -23,6 +23,20 @@ model Topic {
   dismissed Boolean @default(false)
 }
 
+model Element {
+  id Int @id @default(autoincrement())
+  user String @default("public")
+  url String @default("https://example.com")
+  html String @default("<div> No Html </div>")
+  text String @default("No Text")
+  interval Int @default(1)
+  lastReviewed String @default("Never")
+  dismissed Boolean @default(false)
+  elementType String @default("topic")
+  cardFront String @default("No Front")
+  cardBack String @default("No Back")
+}
+
 model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
